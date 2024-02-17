@@ -5,7 +5,9 @@ import (
 	"log"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/sonytom/mecanica-gopher/src/controller/routes"
 )
 
 func main() {
@@ -15,5 +17,14 @@ func main() {
 	}
 
 	fmt.Println(os.Getenv("TESTE"))
+
+	router := gin.Default()
+
+	routes.InitRoutes(&router.RouterGroup)
+
+	err = router.Run(os.Getenv("PORT"))
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 }
