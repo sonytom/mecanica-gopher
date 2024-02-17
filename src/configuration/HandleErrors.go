@@ -5,7 +5,7 @@ import "net/http"
 type HandleError struct {
 	Message string  `json:"message"`
 	Err     string  `json:"error"`
-	Code    int64   `json:"code"`
+	Code    int     `json:"code"`
 	Cases   []Cases `json:"cases"`
 }
 
@@ -14,7 +14,7 @@ type Cases struct {
 	Message string `json:"message"`
 }
 
-func NewHandleErr(message, err string, code int64, cases []Cases) *HandleError {
+func NewHandleErr(message, err string, code int, cases []Cases) *HandleError {
 	return &HandleError{
 		Message: message,
 		Err:     err,
